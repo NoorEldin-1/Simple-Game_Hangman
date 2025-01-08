@@ -1,0 +1,349 @@
+* {
+  box-sizing: border-box;
+  font-family: "Roboto", serif;
+  margin: 0%;
+  padding: 0%;
+}
+body {
+  min-height: 100vh;
+}
+h2 {
+  background-color: #2196f3;
+  text-align: center;
+  padding: 10px 0;
+  color: white;
+}
+.container {
+  width: 1080px;
+  margin: 10px auto;
+  background-color: #dddddd;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+.hangman {
+  padding: 10px;
+  position: relative;
+  height: 350px;
+}
+.hangman .stand {
+  width: 330px;
+  height: 5px;
+  background-color: black;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 5px;
+}
+.hangman .stand::before {
+  content: "";
+  position: absolute;
+  width: 5px;
+  height: 319px;
+  background-color: black;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -314px;
+}
+.hangman .stand::after {
+  content: "";
+  position: absolute;
+  width: 5px;
+  height: 130px;
+  background-color: black;
+  left: 69%;
+  top: -376px;
+  transform: rotate(90deg);
+}
+.hangman .stand span {
+  position: absolute;
+  width: 5px;
+  height: 60px;
+  background-color: black;
+  left: 89%;
+  top: -313px;
+  transform: rotate(0deg);
+}
+.hangman .head {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 5px solid black;
+  left: 75%;
+  transform: translateX(-50%);
+  top: 82px;
+  display: none;
+}
+.hangman .body {
+  position: absolute;
+  width: 5px;
+  height: 100px;
+  background-color: black;
+  left: 75%;
+  transform: translateX(-50%);
+  top: 130px;
+  display: none;
+}
+.hangman .arm1 {
+  position: absolute;
+  width: 5px;
+  height: 50px;
+  background-color: black;
+  left: 71%;
+  transform: translateX(-50%);
+  top: 130px;
+  transform: rotate(45deg);
+  display: none;
+}
+.hangman .arm2 {
+  position: absolute;
+  width: 5px;
+  height: 50px;
+  background-color: black;
+  left: 78%;
+  transform: translateX(-50%);
+  top: 130px;
+  transform: rotate(-45deg);
+  display: none;
+}
+.hangman .leg1 {
+  position: absolute;
+  width: 5px;
+  height: 50px;
+  background-color: black;
+  left: 375px;
+  transform: translateX(-50%);
+  top: 221px;
+  transform: rotate(40deg);
+  display: none;
+}
+.hangman .leg2 {
+  position: absolute;
+  width: 5px;
+  height: 50px;
+  background-color: black;
+  left: 407px;
+  transform: translateX(-50%);
+  top: 221px;
+  transform: rotate(-40deg);
+  display: none;
+}
+.word {
+  padding: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 80px;
+  position: relative;
+}
+.word .guessed-word {
+  display: flex;
+  gap: 25px;
+  justify-content: center;
+}
+.word .guessed-word span {
+  display: block;
+  position: relative;
+  font-size: 25px;
+  color: transparent;
+}
+.word .guessed-word span::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  background-color: black;
+  width: 25px;
+  height: 2px;
+}
+.word .category select {
+  color: #2196f3;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.word .wrong > span {
+  color: #e90000;
+  font-weight: 600;
+  cursor: default;
+}
+.keyboard {
+  background-color: #dddddd;
+  width: 510px;
+  margin: 0 auto;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  justify-content: center;
+}
+.keyboard span {
+  background-color: #009688;
+  color: white;
+  font-weight: bold;
+  padding: 10px 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.keyboard span:hover {
+  background-color: #006e64;
+}
+.clicked {
+  background-color: #999797 !important;
+  pointer-events: none;
+}
+.show {
+  color: black !important;
+}
+.lose-popUp {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: #00000075;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+.lose-popUp div {
+  width: 270px;
+  height: 300px;
+  background-color: #f7f7f7;
+  border-radius: 6px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+.lose-popUp div i {
+  font-size: 120px;
+}
+.lose-popUp div button {
+  padding: 10px 20px;
+  border: none;
+  outline: none;
+  background-color: #2196f3;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.lose-popUp div button:hover {
+  background-color: #1976d2;
+}
+.win-popUp {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: #00000075;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+.win-popUp div {
+  width: 270px;
+  height: 300px;
+  background-color: #f7f7f7;
+  border-radius: 6px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+.win-popUp div i {
+  font-size: 120px;
+}
+.win-popUp div p {
+  color: #3ebb3e;
+}
+.win-popUp div button {
+  padding: 10px 20px;
+  border: none;
+  outline: none;
+  background-color: #2196f3;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.win-popUp div button:hover {
+  background-color: #1976d2;
+}
+.hint span:first-child {
+  color: green;
+  font-weight: 600;
+}
+.hint span:last-child {
+  color: #1976d2;
+  text-transform: capitalize;
+  font-weight: 600;
+}
+.word > i {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  opacity: 0.8;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 20px;
+}
+.word > i:hover {
+  opacity: 1;
+}
+.category-info > div {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #00000047;
+  display: none;
+}
+.category-info > div > div {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+  border-radius: 6px;
+  min-width: 450px;
+  height: 220px;
+  z-index: 100;
+  position: relative;
+}
+.category-info > div > div p {
+  color: #1976d2;
+  font-weight: 600;
+}
+.category-info > div > div p span {
+  color: black;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.category-info > div > div > i {
+  cursor: pointer;
+  position: absolute;
+  top: -7px;
+  right: -6px;
+  font-size: 20px;
+}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hangman Game</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="lose-popUp">
+      <div>
+        <i class="fa-solid fa-face-sad-tear" style="color: #ffd43b"></i>
+        <p>The Correct Word Is: <span></span></p>
+        <button>Try Again</button>
+      </div>
+    </div>
+    <div class="win-popUp">
+      <div>
+        <i class="fa-solid fa-face-smile-wink" style="color: #ffd43b"></i>
+        <p>Congratulations You Win</p>
+        <button>Again</button>
+      </div>
+    </div>
+    <div class="category-info">
+      <div>
+        <div>
+          <p>Programming : <span></span></p>
+          <p>Animals : <span></span></p>
+          <p>Countries : <span></span></p>
+          <p>Sports : <span></span></p>
+          <i class="fa-solid fa-circle-xmark" style="color: #000000"></i>
+        </div>
+      </div>
+    </div>
+    <div class="game">
+      <h2>Hangman Game</h2>
+      <div class="container">
+        <div class="hangman">
+          <div class="stand">
+            <span></span>
+          </div>
+          <div class="body-container">
+            <div class="head"></div>
+            <div class="body"></div>
+            <div class="arm1"></div>
+            <div class="arm2"></div>
+            <div class="leg1"></div>
+            <div class="leg2"></div>
+          </div>
+        </div>
+        <div class="word">
+          <div class="guessed-word"></div>
+          <div class="category">
+            Word Category:
+            <select name="category" id="">
+              <option value="all" selected>All</option>
+              <option value="programming">Programming</option>
+              <option value="animals">Animals</option>
+              <option value="countries">Countries</option>
+              <option value="sports">Sports</option>
+            </select>
+          </div>
+          <div class="hint">
+            <span>Hint:</span> Word Category Is <span></span>
+          </div>
+          <div class="wrong">
+            Number Of Attempts
+            <span><span class="attempts">0</span>/6</span>
+          </div>
+          <i class="fa-solid fa-circle-exclamation" style="color: #000000"></i>
+        </div>
+      </div>
+      <div class="keyboard"></div>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>
